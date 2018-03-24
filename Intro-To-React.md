@@ -85,7 +85,7 @@
 
 * Example of a stateful component that updates its text when a user enters numbers into the input.
 
-![Alt Text]()
+![Alt Text](https://github.com/ScottWorks/React-Notes/blob/master/num-render-demo.gif)
 
 ```JS
 /*Stateful component Classes in React follow a very
