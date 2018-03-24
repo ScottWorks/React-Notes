@@ -90,15 +90,12 @@
 ```JS
 /*Stateful component Classes in React follow a very
 similar pattern as Javascript*/
-
 class Counter extends React.Component {
-
   /*State stores the data specific to that component.
   We must first initialize state, it must be create
   before we can change/ edit it*/
 
   constructor() {
-
     /*the super() method gives the constructor access
     to the parent class, in this case the parent class
     is the Component*/
@@ -112,10 +109,12 @@ class Counter extends React.Component {
     this.state = {
       count: ''
     };
+
+    // See notes below regarding binding methods
+    // this.storeInput = this.storeInput.bind(this);
   }
 
   storeInput(event) {
-
     /*if we console.log(event), the DOM will return an object
     containing many properties about the action that caused
     it to appear. Most commonly we will use the target
@@ -128,10 +127,10 @@ class Counter extends React.Component {
     // returns the input element from the DOM
     // console.log(event.target)
 
-    // returns the entire event object from the DOM
+    // returns the entire object from the DOM
     // console.log(event)
 
-    /*The correct way to change state: use this.setState() to update
+    /*Correct way to change state, use this.setState() to update
     state. This merges the setState object with the current
     state and gets rendered once every second.
 
@@ -153,6 +152,17 @@ class Counter extends React.Component {
           type="text"
           placeholder="Enter a number"
           onChange={(event) => this.storeInput(event)}
+          /*Because we made onChange a callback with the event
+          arguement we are effectively passing the event parameter
+          to the storeInput method. If we wanted to we could also
+          forego the callback method and simply bind storeInput as
+          we did above with:
+
+          "this.storeInput = this.storeInput.bind(this);"
+
+          Then we can write onChange as:
+
+          "onChange={this.storeInput}"*/
         />
         <h1>Rendered Number: {this.state.count}</h1>
       </div>
