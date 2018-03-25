@@ -33,7 +33,7 @@
 
 * The DOM, or Document Object Model, is the interface for HTML and XML documents. It allows us to provide the structure, style, and content of a webpage.
 
-  * The DOM decomposes the webpage into nodes and objects that allow programs written in JavaScript and other languages to interact with the webpage.
+  * The DOM decomposes the HTML elements into nodes and objects that allow programs written in JavaScript and other languages to interact with the webpage. The DOM provides an API interface that allows developers to query and modify objects and nodes. For example `.getElementByID()` is a method that the DOM extends to Javascipt.
 
   * ["The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API. Though we focus exclusively on JavaScript in this reference documentation, implementations of the DOM can be built for any language..."](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
 
@@ -45,7 +45,10 @@
 
 * [There's no big difference between the 'regular' DOM and the virtual DOM. This is why the JSX parts of the React code can look almost like pure HTML.]('http://reactkungfu.com/2015/10/the-difference-between-virtual-dom-and-dom/')
 
-* For more an example on how React interacts with the actual DOM, take a look at the code example below where I use a simple event handler to take the value from an input box and display it in our text.
+* To understand the details of how the DOM is updated we must first understand two data types in React; ReactElement and ReactComponent.
+  * ReactElement's can be thought of as visual representations of the virtual DOM that are stateless, almost all HTML tags are ReactElements. These elements are rendered into the actual DOM and are no longer controlled by React.
+  * ReactComponent's are the same as ReactElements with the only exception being that they are stateful and they do not have access to the Virtual DOM.
+  * Whenever the state changes the component is re-rendered. ReactComponent's can be converted to a ReactElement's, the new ReactElement's are re-rendered in the Virtual DOM. Any changes between the virtual and actual DOM are converted to HTML DOM code that is executed in the actual DOM resulting in an updated web application.
 
 ## Diving into JSX
 
