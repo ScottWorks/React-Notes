@@ -77,13 +77,15 @@
 
 ### State
 
-* State is simply data that is contained within a particular component, this data is private and cannot be shared between components.
+* State is simply data that is contained within a particular component that is subject to change. If an application has any interactivity the data keeping track of changes is considered the state of the component i.e. input fields on a sign-up form, data fetched from a server, notifications for updates in a facebook activity feed, a clock that updates every minute, etc.
 
-* The purpose of using state is so Developers can manage changes that occur within their application at the component level.
+* [State is considered local or encapsulated (private) to a component and is not accessible by other components regardless of the relationship between components.](https://reactjs.org/docs/state-and-lifecycle.html#the-data-flows-down) Although components do not share their state they can be imported/ exported as we saw earlier. For example you may have a parent component that renders a page with many child components that are imported to the parent.
 
-* Components are either stateful or stateless.
+* State allows Developers to manage changes at the component level but it also allows the DOM to re-render only the components that have state changes rather than the entire application. We no longer need to continually search for changes because we explicitly state what changes occur in the application using the this.setState() method.
 
-* Example of a stateful component that updates its text when a user enters numbers into the input.
+* There are situations where managing state in a component is not necessary these components are stateless.
+
+* Example of a stateful component that updates its header text when a user enters numbers into the input field.
 
 ![Alt Text](https://github.com/ScottWorks/React-Notes/blob/master/num-render-demo.gif)
 
