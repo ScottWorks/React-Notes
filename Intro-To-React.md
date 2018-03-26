@@ -82,20 +82,25 @@
 
 * State is simply data that is contained within a particular component that is subject to change. If an application has any interactivity the data keeping track of changes is considered the state of the component i.e. input fields on a sign-up form, data fetched from a server, notifications for updates in a facebook activity feed, a clock that updates every minute, etc.
 
-* [State is considered local or encapsulated (private) to a component and is not accessible by other components regardless of the relationship between components.](https://reactjs.org/docs/state-and-lifecycle.html#the-data-flows-down) Although components do not share their state they can be imported/ exported as we saw earlier. For example you may have a parent component that renders a page with many child components that are imported to the parent.
+* [State is considered local or encapsulated to a component and is not accessible by other components regardless of the relationship between components.](https://reactjs.org/docs/state-and-lifecycle.html#the-data-flows-down) Although components do not share their state they can be imported/ exported as we saw earlier. For example you may have a parent component that renders a page with many child components that are imported to the parent.
 
-* State allows Developers to manage changes at the component level but it also allows the DOM to re-render only the components that have state changes rather than the entire application. We no longer need to continually search for changes because we explicitly state what changes occur in the application using the this.setState() method.
+* State allows Developers to manage changes at the component level but it also allows the DOM to re-render only the components that have state changes rather than the entire application. We no longer need to continually search for changes because we explicitly state what changes occur in the application using the `this.setState()` method.
 
 * There are situations where managing state in a component is not necessary these components are stateless.
 
-* Example of a stateful component that updates its header text when a user enters numbers into the input field.
-
-![Alt Text](https://github.com/ScottWorks/React-Notes/blob/master/num-render-demo.gif)
+* ### [Live Demo!](https://codepen.io/ScottWorks/pen/PRJpyg?editors=0010#code-area)
 
 ```JS
+/* The code below demonstrates a stateful component that updates
+its header text when a user enters numbers into the input field*/
+
+
+//------------------------------------------------------------------
+
+
 /*Stateful component Classes in React follow a very
 similar pattern as Javascript*/
-class Counter extends React.Component {
+class Render extends React.Component {
   /*State stores the data specific to that component.
   We must first initialize state, it must be create
   before we can change/ edit it*/
@@ -112,7 +117,7 @@ class Counter extends React.Component {
     i.e. input values, arrays that will be displayed, etc...*/
 
     this.state = {
-      count: ''
+      input: ''
     };
 
     // See notes below regarding binding methods
@@ -146,7 +151,7 @@ class Counter extends React.Component {
     to event handlers and server responses.*/
 
     this.setState({
-      count: event.target.value
+      input: event.target.value
     });
   }
 
@@ -169,11 +174,24 @@ class Counter extends React.Component {
 
           "onChange={this.storeInput}"*/
         />
-        <h1>Rendered Number: {this.state.count}</h1>
+        <h1>Rendered Text Input: {this.state.input}</h1>
       </div>
     );
   }
 }
 
-export default Counter;
+export default Render;
 ```
+
+### Props
+
+* Props are used to pass information (strings, functions, etc) from a parent to a child component. This allows us to create child components that can be used many times in the parent while remaining unique.
+
+* A child component can effectively change the state of the parent component. This is accomplished through the following flow:
+
+  1.  Parent passes props into the child.
+  2.  Child component will take in the props and return an output back to the parent.
+  3.  State of the parent will be changed via `this.setState()`.
+  4.  Parent is re-rendered.
+
+* Generally speaking the parent component is managing the overall state, nothing changes without the parent components approval. The child component is providing receives information aboout the current state in the form of props, if required these props are altered then passed back to the parent who will change the state as needed.
